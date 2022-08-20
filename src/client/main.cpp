@@ -50,7 +50,7 @@ void showCurrentUserData();
 // 聊天客户端：主线程发送消息，子线程接收消息
 int main(int argc, char **argv){
     if(argc < 3){
-        cerr << "Command invalid! Example: ./ChatClient 127.0.80.1 8000" << endl;
+        cerr << "Command invalid! Example: ./ChatClient 127.0.80.1 6000" << endl;
         exit(-1);
     }
     // 解析通过命令行传递的IP和port

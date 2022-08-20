@@ -16,6 +16,7 @@ using namespace placeholders; // 参数占位符
 #include "friendmodel.hpp"
 #include "groupmodel.hpp"
 #include "json.hpp"
+#include "redis.hpp"
 using json = nlohmann::json;
 
 // 定义一个事件处理器 消息id->事件回调
@@ -51,6 +52,9 @@ class ChatService{
         // 处理客户端异常退出
         void clientCloseException(const TcpConnectionPtr &conn);
 
+        // redis消息队列中获取订阅消息
+        void handleRedisSubscribeMessage(int, string);
+
     private:
         // 构造函数私有化
         ChatService();
@@ -70,6 +74,9 @@ class ChatService{
         OfflineMsgModel _offlineMsgModel;
         FriendModel _friendModel;
         GroupModel _groupModel;
+
+        // redis消息队列操作对象
+        Redis _redis;
 };
 
 
